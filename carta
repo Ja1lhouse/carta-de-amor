@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carta de Amor</title>
+    <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes rainbowText {
+            0% { color: red; }
+            16% { color: orange; }
+            32% { color: yellow; }
+            48% { color: green; }
+            64% { color: blue; }
+            80% { color: indigo; }
+            100% { color: violet; }
+        }
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            background-image: url('carta_fondo_opt.png');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        .carta {
+            max-width: 700px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            line-height: 1.6;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+        }
+        button {
+            background-color: #ff6f91;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+            position: relative;
+        }
+        .respuesta {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: rainbowText 4s infinite alternate;
+        }
+        .firma {
+            margin-top: 40px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="musica" autoplay loop>
+        <source src="tu-audio.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <div class="carta">
+        <div class="encabezado">
+            𝕰𝖒 𝖆𝖑𝖌𝖚𝖒 𝖑𝖚𝖌𝖆𝖗 𝖉𝖔 𝖈𝖔𝖗𝖆𝖈̧𝖆̃𝖔.<br />
+   
+        </div>
+
+        <div class="destinatario">
+           𝘥𝘦𝘴𝘵𝘪𝘯𝘢𝘵𝘢𝘳𝘪𝘰: 𝘈́𝘨𝘢𝘵𝘩𝘢<br />
+        </div>
+
+        <div class="cuerpo">
+            <div class="respuesta">
+                💌 <b>Um Pequeno Poema Para Você</b> 💌<br /><br />
+
+                No sussurro da brisa<br />
+                em cada raio de sol nascente<br />
+                há o reflexo do seu sorriso<br />
+                doce e mágico, tão reluzente.<br /><br />
+
+                Nas estrelas deixo meus sonhos<br />
+                esperando que você os encontre<br />
+                cada palavra leva meu carinho.<br /><br />
+
+                Você é a luz do meu caminho<br />
+                a melodia nos meus dias cinzentos<br />
+                em você encontro um amor sincero<br />
+                mais forte que mil sentimentos.<br /><br />
+            </div>
+
+            <b>Quer ser minha escrava ?</b> 💖<br /><br />
+            <button onclick="respuesta('si')">Sim ❤️</button>
+            <button id="boton-no" onclick="respuesta('no')">Não 😢</button>
+
+            <br /><br />
+            <div id="mensaje-respuesta" class="respuesta"></div>
+            <br />
+            𝖈𝖔𝖒 𝖆𝖒𝖔𝖗
+        </div>
+
+        <div class="firma">
+           𝖏𝖔𝖆̃𝖔 𝖛𝖎𝖙𝖔𝖗
+        </div>
+    </div>
+
+    <script>
+        let intentos = 0;
+
+        function respuesta(opcao) {
+            let mensagem = document.getElementById("mensaje-respuesta");
+            let botaoNo = document.getElementById("boton-no");
+
+            if (opcao === 'si') {
+                mensagem.innerHTML = `
+                    🌹 Obrigado por aceitar! ❤️ 🌹 <br><br>
+                    Como o sol beija a aurora,<br />
+                    entrego meu coração a você,<br />
+                    em cada instante que guardo,<br />
+                    em cada suspiro sincero.<br /><br />
+
+                    Prometo dias de alegria,<br />
+                    noites cheias de ternura,<br />
+                    porque em você encontrei minha vida,<br />
+                    e no seu amor, minha aventura. 💖
+                `;
+            } else {
+                if (intentos < 4) {
+                    botaoNo.style.position = "absolute";
+                    botaoNo.style.left = Math.random() * 80 + "vw";
+                    botaoNo.style.top = Math.random() * 80 + "vh";
+                    intentos++;
+                } else {
+                    botaoNo.style.display = "none";
+                    mensagem.innerHTML = `Tudo bem, eu entendo 😊`;
+                }
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById("musica").muted = false;
+        };
+    </script>
+
+</body>
+</html>
