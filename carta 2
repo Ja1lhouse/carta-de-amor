@@ -230,7 +230,7 @@
                 <br><br>
                 Com todo o meu amor,
                 <br>
-                [Seu Nome Aqui]
+                [João Vitor]
             </p>
             <button class="back-button" onclick="hideContent('cartas')">Voltar</button>
         </div>
